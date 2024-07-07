@@ -1,10 +1,13 @@
-import {Text} from 'react-native'
 
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { Text, View } from 'react-native'
+import { CheckPoint } from '../../Components/CheckPoint'
 
-export function History(){
-    return(
-
-        <Text>This is History</Text>
+export function History() {
+   
+    return (
+        <View>
+            <Text>Checkbox</Text>
+            <CheckPoint />
+        </View>
     )
 }

@@ -1,55 +1,73 @@
 import React from 'react';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { Octicons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { ToNot } from '../Views/Pages/ToNot';
+import { Projects } from '../Views/Pages/Projects';
 import { StopComplain } from '../Views/Pages/StopComplain';
 import { ToDo } from '../Views/Pages/ToDo'
 import { History } from '../Views/Pages/History'
 
-import { useTheme } from '@react-navigation/native';
+import { useTheme } from 'styled-components/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Tab = createMaterialBottomTabNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
 export default function Routes() {
 
-  const Theme = useTheme()
-  
+  const Theme = useTheme();
+
   return (
-    <Tab.Navigator
-      initialRouteName="Not"
-      barStyle={{ backgroundColor: Theme.colors.card}}
-      activeColor={Theme.colors.primary}
-      inactiveColor={Theme.colors.text}
-      
+
+    <Navigator
+      screenOptions={{
+        tabBarActiveTintColor: Theme.COLORS.PRIMARY,
+        tabBarInactiveTintColor: Theme.COLORS.SECONDARY,
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: Theme.COLORS.BACKGROUND,
+          height:100
+        },
+        headerTitleStyle: {
+          color: Theme.COLORS.PRIMARY,
+          fontFamily: 'monospace',
+        },
+        tabBarStyle: {
+          height: 80,
+          backgroundColor: Theme.COLORS.BACKGROUND,
+          borderTopWidth: 0,
+          paddingBottom:5
+        },
+        tabBarLabelStyle: {
+          fontFamily: 'monospace',
+        }
+      }}
     >
-      <Tab.Screen name="Not" component={ToNot}
+
+      <Screen name="Projetos" component={Projects}
         options={{
-          tabBarIcon: ({ color }) => (
-            <SimpleLineIcons name="shield" size={24} color={color} />
-          )
-        }} />
-      <Tab.Screen name="Tasks" component={ToDo}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <SimpleLineIcons name="note" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Icon name="list" size={focused ? 30 : 24} color={color} style={{ marginBottom: 5 }} />
           ),
         }} />
-      <Tab.Screen name="Stop" component={StopComplain}
+      <Screen name="Metas" component={ToDo}
         options={{
-          tabBarIcon: ({ color }) => (
-            <SimpleLineIcons name="exclamation" size={24} color={color}  />
+          tabBarIcon: ({ color, focused }) => (
+            <Icon name="check-square-o" size={focused ? 30 : 24} color={color} style={{ marginBottom: 5 }} />
           )
         }} />
-      <Tab.Screen name="Achievements" component={History}
+      <Screen name="Proibições" component={StopComplain}
         options={{
-          tabBarIcon: ({ color }) => (
-            <SimpleLineIcons name="flag" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <Icon name="remove" size={focused ? 30 : 24} color={color} style={{ marginBottom: 5 }} />
+          )
+        }} />
+      <Screen name="Conquistas" component={History}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <Icon name="diamond" size={focused ? 30 : 24} color={color} style={{ marginBottom: 5 }} />
           )
         }} />
 
-    </Tab.Navigator>
+    </Navigator>
   );
 }

@@ -4,6 +4,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 export function ToDo(){
     return(
-        <Text>Todo</Text>
+        <Text>Metas associadas aos projetos criados</Text>
     )
 }

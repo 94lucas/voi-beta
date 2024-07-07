@@ -1,5 +1,6 @@
-Product Backlog
-1 - React Navigation;
-2 - Theme;
-3 - Firebase Integration;
-4 - Testing;
+Product Backlog: 02/06/24 - 07/02/24 
+
+    1 - Adjust Form [  ]
+    2 - CRUD [  ];
+    3 - REALM and Firebase [  ];
+    

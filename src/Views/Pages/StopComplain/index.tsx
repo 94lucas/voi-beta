@@ -1,9 +1,8 @@
-import {Text} from 'react-native'
 
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {Datec} from '../../Components/Datec';
 
 export function StopComplain(){
     return(
-        <Text>Stop Complain</Text>
+           <Datec />
     )
 }
